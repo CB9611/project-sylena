@@ -1,0 +1,10 @@
+# Global Environment Catch-Alls
+**/venv/
+**/.venv/
+**/.env
+**/node_modules/
+
+# OS and Editor Files
+.DS_Store
+.vscode/
+.idea/
