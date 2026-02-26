@@ -22,7 +22,7 @@ This project is built with a decoupled frontend and backend architecture to ensu
 **Frontend**
 - React.js
 - Vite
-- JavaScript / HTML
+- JavaScript / HTML / CSS
 
 **Backend & Data Handling**
 - Python
@@ -86,6 +86,11 @@ cd frontend
 Install the required Node dependencies:
 \`\`\`bash
 npm install
+\`\`\`
+
+Create a `.env` file in the `frontend` directory to point to your local backend:
+\`\`\`text
+VITE_API_URL=http://127.0.0.1:8000
 \`\`\`
 
 Start the Vite development server:
