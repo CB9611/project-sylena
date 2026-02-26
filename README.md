@@ -42,12 +42,12 @@ Because this project uses a decoupled architecture, you will need to run two sep
 ### 1. Backend Setup (FastAPI)
 Open a terminal and navigate to the root directory of the project, then enter the `backend` folder:
 
-\`\`\`bash
+````bash
 cd backend
-\`\`\`
+````
 
 Create and activate a virtual environment:
-\`\`\`bash
+````bash
 # Windows
 python -m venv venv
 venv\Scripts\activate
@@ -55,48 +55,48 @@ venv\Scripts\activate
 # macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
-\`\`\`
+````
 
 Install the required Python dependencies:
-\`\`\`bash
+````bash
 pip install fastapi uvicorn requests python-dotenv
-\`\`\`
+````
 
 Create a `.env` file in the `backend` directory and add your Spotify API credentials. It must look exactly like this:
-\`\`\`text
+````text
 SPOTIFY_CLIENT_ID=your_spotify_client_id_here
 SPOTIFY_CLIENT_SECRET=your_spotify_client_secret_here
 SPOTIFY_REDIRECT_URI=http://127.0.0.1:8000/callback
 FRONTEND_URL=http://localhost:5173
-\`\`\`
+````
 
 Start the FastAPI server:
-\`\`\`bash
+````bash
 uvicorn main:app --reload
-\`\`\`
+````
 *The backend is now running on `http://127.0.0.1:8000`*
 
 ### 2. Frontend Setup (React/Vite)
 Open a **new** terminal window (leave the backend running) and navigate to the `frontend` directory:
 
-\`\`\`bash
+````bash
 cd frontend
-\`\`\`
+````
 
 Install the required Node dependencies:
-\`\`\`bash
+````bash
 npm install
-\`\`\`
+````
 
 Create a `.env` file in the `frontend` directory to point to your local backend:
-\`\`\`text
+````text
 VITE_API_URL=http://127.0.0.1:8000
-\`\`\`
+````
 
 Start the Vite development server:
-\`\`\`bash
+````bash
 npm run dev
-\`\`\`
+````
 *The frontend is now running on `http://localhost:5173`*
 
 ### 3. Usage
