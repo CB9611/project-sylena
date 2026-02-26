@@ -7,9 +7,9 @@ function App() {
   const [token, setToken] = useState(null)
   const [tracks, setTracks] = useState([])
   const [loading, setLoading] = useState(false)
-  
+
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
-  
+
   const sliderRef = useRef(null)
   const slideRefs = useRef([])
 
@@ -27,21 +27,21 @@ function App() {
   useEffect(() => {
     if (token) {
       setLoading(true)
-      
+
       fetch(`${API_BASE_URL}/api/tracks`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       })
-      .then(response => response.json())
-      .then(data => {
-        setTracks(data.top_tracks)
-        setLoading(false)
-      })
-      .catch(error => {
-        console.error("Error fetching tracks:", error)
-        setLoading(false)
-      })
+        .then(response => response.json())
+        .then(data => {
+          setTracks(data.top_tracks)
+          setLoading(false)
+        })
+        .catch(error => {
+          console.error("Error fetching tracks:", error)
+          setLoading(false)
+        })
     }
   }, [token])
 
@@ -78,6 +78,10 @@ function App() {
       {!token ? (
         <div className="login-screen">
           <h1>Project Sylena</h1>
+          <p className="hero-description">
+            Experience your music in high fidelity. Project Sylena connects to your Spotify
+            profile to generate a visual-first showcase of your <strong>top 25 most played tracks</strong>.
+          </p>
           <a href={`${API_BASE_URL}/login`}>
             <button className="login-button">Log in with Spotify</button>
           </a>
@@ -98,17 +102,17 @@ function App() {
 
           <div className="track-slider" ref={sliderRef}>
             {loading && <div className="loading">Loading your heavy rotation...</div>}
-            
+
             {tracks.map((track, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="track-slide"
                 data-index={index}
                 ref={(el) => (slideRefs.current[index] = el)}
               >
-                
-                <div 
-                  className="bg-blur" 
+
+                <div
+                  className="bg-blur"
                   style={{ backgroundImage: `url(${track.album_art})` }}
                 ></div>
 

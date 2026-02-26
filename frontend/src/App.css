@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.hero-description strong {
+  color: #1DB954;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #b3b3b3;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  max-width: 550px;
+}
+
 body {
   background-color: #0a0a0a;
   color: white;
@@ -122,9 +140,20 @@ body {
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(29, 185, 84, 0.2);
 }
 
-/* --- UI OVERLAYS --- */
+.login-button:hover {
+  background-color: #1ed760;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(29, 185, 84, 0.4);
+  color: white;
+}
+
+.login-button:active {
+  transform: translateY(0) scale(0.98);
+}
 
 .track-counter {
   position: fixed;
@@ -135,7 +164,7 @@ body {
   font-weight: 800;
   color: white;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-  pointer-events: none; /* Lets you click through it if needed */
+  pointer-events: none;
 }
 
 .counter-total {
