@@ -85,6 +85,19 @@ function App() {
           <a href={`${API_BASE_URL}/login`}>
             <button className="login-button">Log in with Spotify</button>
           </a>
+          <div className="hero-links">
+            <a href="https://cameronbranch.com" target="_blank" rel="noreferrer">Portfolio</a>
+            <a href="https://github.com/CB9611" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/CB9611" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+          <footer className="footer">
+            <p>
+              © Cameron Branch {new Date().getFullYear()}, unless otherwise noted. All rights reserved. • Powered by{' '}
+              <a href="https://react.dev" target="_blank" rel="noopener noreferrer">React</a>,{' '}
+              <a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer">FastAPI</a> &{' '}
+              <a href="https://www.python.org" target="_blank" rel="noopener noreferrer">Python</a>
+            </p>
+          </footer>
         </div>
       ) : (
         <>
