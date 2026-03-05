@@ -7,7 +7,7 @@ on:
     branches: 
       [ master ]
     paths:
-    - '**'
+    - 'backend/**'
     - '.github/workflows/project-sylena-AutoDeployTrigger-e677d9f1-0151-4770-b940-3540f6d73ada.yml'
 
   # Allow manual trigger 
@@ -35,15 +35,13 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}/backend
-          _dockerfilePathKey_: _dockerfilePath_
-          _targetLabelKey_: _targetLabel_
+          dockerfilePath: Dockerfile
           registryUrl: sylenaregistry.azurecr.io
           registryUsername: ${{ secrets.PROJECTSYLENA_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.PROJECTSYLENA_REGISTRY_PASSWORD }}
           containerAppName: project-sylena
           resourceGroup: project-sylena-rg
           imageToBuild: sylenaregistry.azurecr.io/project-sylena:${{ github.sha }}
-          _buildArgumentsKey_: |
-            _buildArgumentsValues_
+
 
 
