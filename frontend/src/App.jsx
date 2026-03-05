@@ -7,11 +7,33 @@ function App() {
   const [token, setToken] = useState(null)
   const [tracks, setTracks] = useState([])
   const [loading, setLoading] = useState(false)
-
+  const [isBooting, setIsBooting] = useState(false)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
 
   const sliderRef = useRef(null)
   const slideRefs = useRef([])
+
+  const handleLogin = async () => {
+    setIsBooting(true);
+
+    const minWait = new Promise((resolve) => setTimeout(resolve, 3000));
+
+    const startBackend = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/health`)
+        if (response.ok) {
+          await minWait;
+          window.location.href = `${API_BASE_URL}/login`;
+        } else {
+          throw new Error("Waking up...");
+        }
+      } catch (error) {
+        setTimeout(startBackend, 3000);
+      }
+    };
+
+    startBackend();
+  }
 
   useEffect(() => {
     const queryString = window.location.search
@@ -73,6 +95,16 @@ function App() {
     }
   };
 
+  if (isBooting) {
+    return (
+      <div className="loading-container">
+        <h1>Project Sylena // Loading</h1>
+        <p>Curating your Soundscape...</p>
+        <div className="spinner" />
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       {!token ? (
@@ -82,9 +114,7 @@ function App() {
             Experience your music in high fidelity. Project Sylena connects to your Spotify
             profile to generate a visual-first showcase of your <strong>top 25 most played tracks</strong>.
           </p>
-          <a href={`${API_BASE_URL}/login`}>
-            <button className="login-button">Log in with Spotify</button>
-          </a>
+          <button className="login-button" onClick={handleLogin}>Log in with Spotify</button>
           <div className="hero-links">
             <a href="https://cameronbranch.com" target="_blank" rel="noreferrer">Portfolio</a>
             <a href="https://github.com/CB9611" target="_blank" rel="noreferrer">GitHub</a>

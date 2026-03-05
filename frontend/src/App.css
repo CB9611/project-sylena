@@ -17,7 +17,7 @@ body {
 }
 
 .login-screen {
-  position: relative; /* Added relative here for the absolute footer */
+  position: relative;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -25,6 +25,13 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #0a0a0a;
+}
+
+.login-screen h1 {
+  color: #1DB954;
+  text-shadow: 
+    0 0 15px rgba(29, 185, 84, 0.4), 
+    0 0 35px rgba(29, 185, 84, 0.2);
 }
 
 .hero-description {
@@ -62,6 +69,62 @@ body {
   border-bottom: 1px solid #1DB954;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0a0a0a;
+  color: #f8fafc;
+  font-family: 'Inter', -apple-system, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.loading-container h1 {
+  font-size: 36px;
+  letter-spacing: -0.5px;
+  color: #1DB954;
+  text-shadow: 
+    0 0 15px rgba(29, 185, 84, 0.4), 
+    0 0 35px rgba(29, 185, 84, 0.2);
+}
+
+.loading-container p {
+  font-size: 18px;
+  color: #b3b3b3;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  max-width: 550px;
+  text-align: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-container {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #1DB954;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
 .login-button {
   margin-top: 2rem;
   padding: 15px 40px;
@@ -73,7 +136,7 @@ body {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 30px rgba(29, 185, 84, 0.2);
-  text-decoration: none; /* Added in case it's an <a> tag */
+  text-decoration: none;
   display: inline-block;
 }
 
